@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://localhost:your_laravel_port",
+    "secure": false
+  }
+}
