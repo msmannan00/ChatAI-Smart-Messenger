@@ -9,8 +9,8 @@ import {MessageDisplayComponent} from "./pages/app/message-display/message-displ
 import {CommonModule} from "@angular/common";
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [CommonModule, BrowserModule, FormsModule, BrowserAnimationsModule, SidebarComponent, DashboardComponent, MessageDisplayComponent],
+  declarations: [AppComponent, SidebarComponent, DashboardComponent, MessageDisplayComponent],
+  imports: [CommonModule, BrowserModule, FormsModule, BrowserAnimationsModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

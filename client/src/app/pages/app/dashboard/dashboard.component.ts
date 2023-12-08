@@ -1,16 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {MessageDisplayComponent} from "../message-display/message-display.component";
-import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MessageDisplayComponent,
-    NgForOf
-  ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
@@ -21,7 +12,7 @@ export class DashboardComponent {
 
   sendMessage() {
     if (this.newMessage.trim() !== '') {
-      this.filteredMessages.push({ user: 'User', text: this.newMessage });
+      this.filteredMessages.push({ user: 'user', text: this.newMessage });
       this.newMessage = '';
       this.scrollToBottom();
     }

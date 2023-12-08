@@ -3,9 +3,7 @@
     <div class="col-md-12 mx-auto flex-grow-1 position-relative p-0">
       <div class="messages-container overflow-auto chatbox" #chatbox>
         <app-message-display *ngFor="let message of filteredMessages" [text]="message.text" [user]="message.user"></app-message-display>
-
       </div>
-
       <div class="input-group input-group-lg message-container">
         <input type="text" class="form-control messenger-style border-end-0 rounded-end-0" placeholder="Type your message here..." [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
         <div class="input-group-append">

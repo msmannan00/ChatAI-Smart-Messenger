@@ -3,11 +3,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-sidebar',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormsModule
-  ],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })

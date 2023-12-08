@@ -1,5 +1,5 @@
 <div [ngClass]="{'user-message': user === 'user', 'bot-message': user === 'bot'}">
     <i class="far fa-user" *ngIf="user === 'user'"></i>
     <i class="fas fa-robot" *ngIf="user === 'bot'"></i>
-    {{ text }}
+    {{text}}
 </div>
