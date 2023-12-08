@@ -1,23 +1,27 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormsModule} from "@angular/forms";
+import {MessageDisplayComponent} from "../message-display/message-display.component";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    MessageDisplayComponent,
+    NgForOf
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
   @ViewChild('chatbox', { static: false }) chatbox!: ElementRef;
-  messages: { sender: string; text: string }[] = [];
+  filteredMessages: { text: string; user: string }[] = [];
   newMessage: string = '';
 
   sendMessage() {
     if (this.newMessage.trim() !== '') {
-      this.messages.push({ sender: 'User', text: this.newMessage });
+      this.filteredMessages.push({ user: 'User', text: this.newMessage });
       this.newMessage = '';
       this.scrollToBottom();
     }

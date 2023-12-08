@@ -2,9 +2,8 @@
   <div class="row flex-column flex-md-row h-100">
     <div class="col-md-12 mx-auto flex-grow-1 position-relative p-0">
       <div class="messages-container overflow-auto chatbox" #chatbox>
-        <div *ngFor="let message of messages">
-          {{ message.sender }}: {{ message.text }}
-        </div>
+        <app-message-display *ngFor="let message of filteredMessages" [text]="message.text" [user]="message.user"></app-message-display>
+
       </div>
 
       <div class="input-group input-group-lg message-container">
