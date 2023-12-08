@@ -1,18 +1,35 @@
 <div class="container chat-container">
-  <div class="row flex-column flex-md-row h-100">
-    <div class="col-md-12 mx-auto flex-grow-1 position-relative p-0">
-      Total messeges count {{ messages.length }}
-      <div class="messages-container overflow-auto chatbox" #chatbox>
-        <div *ngFor="let message of messages">
-          {{ message.sender }}: {{ message.text }}
-        </div>
+  <div class="row flex-column flex-md-row">
+    <div class="top-bar d-flex justify-content-end mb-3">
+      <button class="btn btn-secondary me-2" (click)="viewHistory()">View History</button>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="selectModeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Select Mode
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="selectModeDropdown">
+          <li *ngFor="let mode of modes">
+            <a class="dropdown-item" href="#" (click)="selectMode(mode)">{{ mode }}</a>
+          </li>
+        </ul>
       </div>
-
-      <div class="input-group input-group-lg message-container">
-        <input [@fadeOut]="chatbox" type="text" class="form-control messenger-style border-end-0 rounded-end-0" placeholder="Type your message here..." [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+      <div class="input-group w-auto ms-2">
+        <input [(ngModel)]="searchTerm" placeholder="Search messages..." class="form-control" (ngModelChange)="searchMessages()" />
+        <button class="btn btn-primary">Search</button>
+      </div>
+    </div>
+    <div class="col-md-12 mx-auto flex-grow-1 p-0">
+      <div class="messages-container overflow-auto chatbox" #chatbox>
+        <app-message-display *ngFor="let message of filteredMessages" [text]="message.text" [user]="message.user"></app-message-display>
+        <app-message-display *ngIf="typing" [text]="'Bot is typing...'" [user]="'bot'"></app-message-display>
+      </div>
+      <div class="input-group input-group-lg mb-3 message-container">
+        <input [@fadeOut]="chatbox" type="text" class="form-control messenger-style border-end-0 rounded-end-0" placeholder="Type your message here..." [(ngModel)]="userMessage" (keyup.enter)="sendMessage()">
         <div class="input-group-append">
-          <button type="button" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
+          <button type="button" *ngIf="!typing" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
             <i class="bi bi-arrow-up"></i>
+          </button>
+          <button *ngIf="typing" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="stopTyping()">
+            <i class="fas fa-stop"></i> 
           </button>
         </div>
       </div>
