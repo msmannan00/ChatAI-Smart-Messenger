@@ -11,13 +11,13 @@ body {
 }
 
 #wrapper.toggled {
-  padding-left: 250px;
+  padding-left: 300px;
 }
 
 #page-content-wrapper {
   width: 100%;
   position: absolute;
-  padding: 15px;
+  padding: 0;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -32,7 +32,7 @@ body {
 
 @media(min-width:768px) {
   #wrapper {
-    padding-left: 250px;
+    padding-left: 300px;
   }
 
   #wrapper.toggled {

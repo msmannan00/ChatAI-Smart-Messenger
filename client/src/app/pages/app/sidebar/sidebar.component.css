@@ -17,9 +17,9 @@
 .sidebar-nav {
   position: absolute;
   top: 0;
-  width: 250px;
+  width: 300px;
   margin: 0;
-  padding: 0;
+  padding: 0 15px;
   list-style: none;
 }
 
@@ -60,9 +60,29 @@
   background: none;
 }
 
+.select-box{
+  border-radius: 25px;
+  margin-top: 20px;
+  padding-left: 20px;
+  height: 46px;
+}
+
+.search-box{
+  width: 90%;
+  border: 0;
+  padding-left: 20px;
+  border-radius: 25px;
+  margin-top: 30px;
+  height: 46px;
+}
+
+.search-box::placeholder {
+  color: #a6a6a6;
+}
+
 @media(min-width:768px) {
 
   #sidebar-wrapper {
-    width: 250px;
+    width: 300px;
   }
 }

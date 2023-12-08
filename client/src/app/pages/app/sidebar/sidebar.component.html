@@ -2,14 +2,21 @@
   <ul class="sidebar-nav">
     <li class="sidebar-brand">
       <a href="#">
-        <strong>Smart Messenger</strong>
+        <img src="assets/images/logo-wide.png" alt="loading" class="mt-3"/>
       </a>
     </li>
-    <li>
-      <a href="#">Dashboard</a>
+    <li class="d-flex justify-content-center">
+      <input type="text" class="form-control search-box" placeholder="Search message">
     </li>
     <li>
-      <a href="#">Shortcuts</a>
+      <div class="container">
+        <select class="form-select select-box" id="selectBox" [(ngModel)]="userMood">
+          <option value="option1">Regular</option>
+          <option value="option2">Happy</option>
+          <option value="option3">Sad</option>
+          <option value="option4">Excited</option>
+        </select>
+      </div>
     </li>
   </ul>
 </div>

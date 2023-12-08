@@ -19,7 +19,7 @@
   flex-grow: 1;
   overflow-y: auto;
   max-height: calc(100vh - 125px);
-  min-height: 500px;
+  min-height: 100px;
   width: 100%;
 }
 
@@ -34,6 +34,7 @@
 
 .container .messenger-style {
   font-size: 16px;
+  background: white;
   border-color: #e6e6e6;
   height: 48px;
   padding: 20px;
@@ -51,7 +52,12 @@
 }
 
 .chatbox {
-  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.1) inset, -3px -3px 6px 1px rgba(255, 255, 255, 0.1) inset;
+  box-shadow:
+    3px 3px 6px 0 rgba(0, 0, 0, 0.1) inset,
+    -3px -3px 6px 1px rgba(255, 255, 255, 0.1) inset,
+    3px -3px 6px 1px rgba(255, 255, 255, 0.1) inset,
+    -3px 3px 6px 1px rgba(210, 210, 210, 0.1) inset,
+    0 3px 6px rgba(0, 0, 0, 0.1) inset;
   padding: 25px;
   border-radius: 8px;
   border: 1px solid #e6e6e6;
