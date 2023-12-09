@@ -1,11 +1,14 @@
 <div [ngClass]="{'sidebar-wrapper-close': messengerService.expanded.value, 'sidebar-wrapper': !messengerService.expanded.value}">
   <ul class="sidebar-nav">
     <li class="sidebar-brand">
-      <img src="assets/images/logo-wide.png" alt="loading" class="mt-3" />
+      <img ngSrc="assets/images/logo-wide.png" alt="loading" class="mt-3" height="48" width="144"/>
       <div class="hamburger-icon" (click)="onToggleSidebar()">&#9776;</div>
     </li>
     <li class="d-flex justify-content-center">
-      <input type="text" class="form-control search-box" placeholder="Search message" [(ngModel)]="search" (ngModelChange)="onUpdateSearch($event)">
+      <button [disabled]="messengerService.awaitResponse.value" type="button" class="btn btn-primary sidebar-item" (click)="onNewChat()">New chat</button>
+    </li>
+    <li class="d-flex justify-content-center">
+      <input type="text" class="form-control sidebar-item" placeholder="Search message" [(ngModel)]="search" (ngModelChange)="onUpdateSearch($event)">
     </li>
     <li>
       <div class="container">
@@ -17,5 +20,10 @@
         </select>
       </div>
     </li>
+    <hr class="mt-4 mb4 my-4 border-white">
+    <li *ngFor="let message of messengerService.messageHistory; let index = index">
+      <button [disabled]="messengerService.awaitResponse.value" (click)="messengerService.openChat(index)" *ngIf="message[1]" class="sidebar-history-item">{{ message[1]?.text }}</button>
+    </li>
+
   </ul>
 </div>

@@ -52,9 +52,18 @@
   border-radius: 25px;
 }
 
+.message-content-user{
+  background-color: #e6f7ff;
+  color: #00344d;
+}
+
+.message-content-bot{
+  background-color: #fff5e6;
+  color: #4d2e00;
+}
+
 .message-content {
   max-width: 70%;
-  background-color: #e6f7ff;
   padding: 10px;
   border-radius: 10px;
   font-size: 15px;

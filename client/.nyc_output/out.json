@@ -1,0 +1,92 @@
+{
+  "/home/morgan-freeman/Workspace/ChatAI/client/cypress.config.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/cypress.config.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/main.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/main.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/polyfills.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/polyfills.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/app.module.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/app.module.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/app.routes.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/app.routes.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/services/messenger.service.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/services/messenger.service.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/dashboard/dashboard.component.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/dashboard/dashboard.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/message-display/message-display.component.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/message-display/message-display.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/root/app.component.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/root/app.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  },
+  "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/sidebar/sidebar.component.ts": {
+    "path": "/home/morgan-freeman/Workspace/ChatAI/client/src/app/pages/app/sidebar/sidebar.component.ts",
+    "statementMap": {},
+    "fnMap": {},
+    "branchMap": {},
+    "s": {},
+    "f": {},
+    "b": {}
+  }
+}

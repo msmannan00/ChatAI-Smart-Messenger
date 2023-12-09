@@ -1,41 +1,47 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MessengerService} from "../../../services/messenger.service";
+import {MessengerService} from "@app/services/messenger.service";
+import {HttpService} from "@app/services/http.service";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit{
-  @ViewChild('chatbox', { static: false }) chatbox!: ElementRef;
-  messages: { text: string; user: string }[] = [];
-  filteredMessages: { text: string; user: string }[] = [];
-  newMessage: string = '';
+export class DashboardComponent implements OnInit {
+  @ViewChild('chatbox', {static: false}) chatbox!: ElementRef;
 
-  constructor(public messengerService:MessengerService) {
-  }
+  messageModel: string = '';
 
-  sendMessage() {
-    if (this.newMessage.trim() !== '') {
-      this.filteredMessages.push({ user: 'bot', text: this.newMessage });
-      this.messages.push({ user: 'bot', text: this.newMessage });
-      this.newMessage = '';
-      this.scrollToBottom();
-    }
-  }
-
-  private filterMessages(searchText: string): void {
-    this.filteredMessages = this.messages.filter(message => message.text.includes(this.messengerService.filter.value));
-  }
-
-  onToggleSidebar(){
-    this.messengerService.toggleExpanded()
+  constructor(public messengerService: MessengerService, private httpService:HttpService) {
   }
 
   ngOnInit(): void {
-    this.messengerService.filter.subscribe((newFilter: string) => {
-      this.filterMessages(newFilter);
-    });
+    this.messengerService.newChat();
+  }
+
+  generateMessage(type:string, message:string){
+    this.messengerService.addMessage({user: type, text: message})
+    this.scrollToBottom();
+  }
+
+  sendMessage() {
+    if (this.messageModel.trim() !== '' && !this.messengerService.awaitResponse.value) {
+      this.generateMessage("user", this.messageModel)
+      this.messageModel = '';
+      this.requestChatGPTResponse();
+    }
+  }
+
+  requestChatGPTResponse(){
+    this.messengerService.updateAwaitResponse(true);
+    setTimeout(() => {
+      this.generateMessage("bot", "dummy message")
+      this.messengerService.updateAwaitResponse(false);
+    }, 2000);
+  }
+
+  onToggleSidebar() {
+    this.messengerService.toggleExpanded()
   }
 
   private scrollToBottom() {

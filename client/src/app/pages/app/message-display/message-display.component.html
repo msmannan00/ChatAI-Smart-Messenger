@@ -3,7 +3,7 @@
     <i class="bi bi-person" *ngIf="user === 'user'"></i>
     <i class="bi bi-robot" *ngIf="user === 'bot'"></i>
   </div>
-  <div class="message-content">
-    {{text}}
+  <div class="message-content" [ngClass]="{'message-content-user': user === 'user', 'message-content-bot': user === 'bot'}">
+    {{ text }}
   </div>
 </div>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MessengerService} from "../../../services/messenger.service";
+import {MessengerService} from "@app/services/messenger.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -10,14 +10,14 @@ export class SidebarComponent {
   behaviour: string = 'regular';
   search: string = ''
 
-  constructor(public messengerService:MessengerService) {
+  constructor(public messengerService: MessengerService) {
   }
 
-  onToggleSidebar(){
+  onToggleSidebar() {
     this.messengerService.toggleExpanded()
   }
 
-  onUpdateBehaviour(){
+  onUpdateBehaviour() {
     this.messengerService.updateBehaviour(this.behaviour)
   }
 
@@ -25,4 +25,7 @@ export class SidebarComponent {
     this.messengerService.updateFilter(searchedItem)
   }
 
+  onNewChat(){
+    this.messengerService.newChat();
+  }
 }
