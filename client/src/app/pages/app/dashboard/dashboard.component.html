@@ -1,3 +1,4 @@
+<div class="hamburger-icon" (click)="onToggleSidebar()">&#9776;</div>
 <div class="container chat-container">
   <div class="row flex-column flex-md-row h-100">
     <div class="col-md-12 mx-auto flex-grow-1 position-relative p-0">
@@ -7,7 +8,7 @@
       </div>
       <div class="input-group input-group-lg message-container">
         <input type="text" class="form-control messenger-style border-end-0 rounded-end-0" placeholder="Type your message here..." [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
-        <div class="input-group-append"messages-container>
+        <div class="input-group-append">
           <button type="button" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
             <i class="bi bi-arrow-up"></i>
           </button>

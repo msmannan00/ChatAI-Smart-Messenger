@@ -28,6 +28,10 @@ export class DashboardComponent implements OnInit{
     this.filteredMessages = this.messages.filter(message => message.text.includes(this.messengerService.filter.value));
   }
 
+  onToggleSidebar(){
+    this.messengerService.toggleExpanded()
+  }
+
   ngOnInit(): void {
     this.messengerService.filter.subscribe((newFilter: string) => {
       this.filterMessages(newFilter);

@@ -1,9 +1,8 @@
-<div id="sidebar-wrapper">
+<div [ngClass]="{'sidebar-wrapper-close': messengerService.expanded.value, 'sidebar-wrapper': !messengerService.expanded.value}">
   <ul class="sidebar-nav">
     <li class="sidebar-brand">
-      <a href="/">
-        <img src="assets/images/logo-wide.png" alt="loading" class="mt-3"/>
-      </a>
+      <img src="assets/images/logo-wide.png" alt="loading" class="mt-3" />
+      <div class="hamburger-icon" (click)="onToggleSidebar()">&#9776;</div>
     </li>
     <li class="d-flex justify-content-center">
       <input type="text" class="form-control search-box" placeholder="Search message" [(ngModel)]="search" (ngModelChange)="onUpdateSearch($event)">

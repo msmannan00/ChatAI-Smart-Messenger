@@ -14,6 +14,10 @@ export class MessengerService {
 
   }
 
+  toggleExpanded(): void {
+    this.expanded.next(!this.expanded.value);
+  }
+
   updateBehaviour(newMessage: string): void {
     this.behaviour.next(newMessage);
   }
