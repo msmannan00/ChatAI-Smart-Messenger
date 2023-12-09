@@ -1,16 +1,23 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MessengerService} from "@app/services/messenger.service";
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
   behaviour: string = 'regular';
   search: string = ''
 
   constructor(public messengerService: MessengerService) {
+  }
+
+  ngOnInit(): void {
+    this.messengerService.filter.subscribe((filter) => {
+      this.search = filter;
+    });
   }
 
   onToggleSidebar() {

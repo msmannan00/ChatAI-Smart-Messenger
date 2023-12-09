@@ -34,13 +34,13 @@ export class MessengerService {
     this.messages = []
     this.addMessage({user: "bot", text: "how may i help you ?"});
     this.messageHistory.push(this.messages);
+    this.filter.next("");
   }
 
   openChat(index: number): void {
     if (index >= 0 && index < this.messageHistory.length) {
       this.messages = this.messageHistory[index];
-    } else {
-      console.error("Invalid index:", index);
+      this.filter.next("");
     }
   }
 

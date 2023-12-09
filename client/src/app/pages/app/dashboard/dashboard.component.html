@@ -7,14 +7,14 @@
         <br><br><br><br><br>
       </div>
       <div class="input-group input-group-lg message-container">
-        <input type="text" class="form-control messenger-style border-end-0 rounded-end-0" placeholder="Type your message here..." [(ngModel)]="messageModel" (keyup.enter)="sendMessage()">
+        <input id="messenger" type="text" class="form-control messenger-style border-end-0 rounded-end-0" placeholder="Type your message here..." [(ngModel)]="messageModel" (keyup.enter)="sendMessage()">
         <div class="input-group-append" *ngIf="messengerService.awaitResponse.value">
-          <button type="button" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
+          <button id="loading" type="button" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center">
             <div class="loading-circle"></div>
           </button>
         </div>
         <div class="input-group-append">
-          <div class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center">
+          <div id="send" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
             <i class="bi bi-arrow-up"></i>
           </div>
         </div>
