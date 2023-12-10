@@ -35,7 +35,10 @@ export class DashboardComponent implements OnInit {
     this.messengerService.updateAwaitResponse(true);
     this.messengerService.makeRequest(lastMessage, request).subscribe({
       next: (response) => {
-        this.generateMessage("bot", response[0],false)
+        if (Array.isArray(response) && response.length > 0) {
+          const generatedText = response[0]['original']['generated_text'];
+          this.generateMessage("bot", generatedText, false);
+        }
         this.messengerService.updateAwaitResponse(false);
       },
       error: (error: any) => {
