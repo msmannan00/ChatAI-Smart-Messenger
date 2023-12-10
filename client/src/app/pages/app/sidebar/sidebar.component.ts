@@ -8,7 +8,7 @@ import {MessengerService} from "@app/services/messenger.service";
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class SidebarComponent implements OnInit{
-  behaviour: string = 'regular';
+  behaviour: string = 'normal';
   search: string = ''
 
   constructor(public messengerService: MessengerService) {

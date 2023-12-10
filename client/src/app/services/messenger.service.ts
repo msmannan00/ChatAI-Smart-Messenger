@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {HttpService} from "@app/services/http.service";
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessengerService {
-  public behaviour = new BehaviorSubject<string>('');
+  public behaviour = new BehaviorSubject<string>('normal');
   public filter = new BehaviorSubject<string>('');
   public expanded = new BehaviorSubject<boolean>(true);
   public awaitResponse = new BehaviorSubject<boolean>(false);
-  public messageHistory: { text: string; user: string }[][] = [];
-  public messages: { text: string; user: string }[] = [];
+  public messageHistory: { text: string; user: string ; error: boolean}[][] = [];
+  public messages: { text: string; user: string ; error: boolean}[] = [];
 
-  constructor() {}
+  constructor(private httpService:HttpService) {
+
+  }
 
   toggleExpanded(): void {
     this.expanded.next(!this.expanded.value);
@@ -26,13 +29,21 @@ export class MessengerService {
     this.filter.next(newMessage);
   }
 
+  getLastMessage(){
+    if(this.messages.length>2){
+      return this.messages[this.messages.length-2].text
+    }else {
+      return "hi"
+    }
+  }
+
   updateAwaitResponse(status: boolean): void {
     this.awaitResponse.next(status);
   }
 
   newChat(){
     this.messages = []
-    this.addMessage({user: "bot", text: "how may i help you ?"});
+    this.addMessage({user: "bot", text: "how may i help you ?", error: false});
     this.messageHistory.push(this.messages);
     this.filter.next("");
   }
@@ -44,7 +55,12 @@ export class MessengerService {
     }
   }
 
-  addMessage(message: { text: string; user: string }): void {
+  makeRequest(lastMessage:string, request:string){
+    const behavior = this.behaviour.value;
+    return this.httpService.createRequest(behavior, lastMessage, request)
+  }
+
+  addMessage(message: { text: string; user: string ; error: boolean}): void {
     this.messages.push(message);
   }
 

@@ -62,6 +62,11 @@
   color: #4d2e00;
 }
 
+.message-content-error{
+  background-color: #ffe6e6;
+  color: #4d0000;
+}
+
 .message-content {
   max-width: 70%;
   padding: 10px;

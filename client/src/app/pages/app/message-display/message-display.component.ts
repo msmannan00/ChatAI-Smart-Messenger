@@ -8,4 +8,5 @@ import {Component, Input} from '@angular/core';
 export class MessageDisplayComponent {
   @Input() text: string = '';
   @Input() user: string = '';
+  @Input() error: boolean = false;
 }
