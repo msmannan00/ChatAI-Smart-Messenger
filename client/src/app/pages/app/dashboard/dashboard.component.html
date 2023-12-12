@@ -14,8 +14,11 @@
           </button>
         </div>
         <div class="input-group-append">
-          <div id="send" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
+          <div id="send" *ngIf="!messengerService.awaitResponse.value" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="sendMessage()">
             <i class="bi bi-arrow-up"></i>
+          </div>
+          <div id="stop" *ngIf="messengerService.awaitResponse.value" class="btn messenger-style border-start-0 rounded-start-0 d-flex align-items-center" (click)="stopMessage()">
+            <i class="bi bi-stop-fill"></i>
           </div>
         </div>
       </div>

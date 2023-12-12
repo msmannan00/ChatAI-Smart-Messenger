@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MessengerService} from "@app/services/messenger.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,7 @@ import {MessengerService} from "@app/services/messenger.service";
 })
 export class DashboardComponent implements OnInit {
   @ViewChild('chatbox', {static: false}) chatbox!: ElementRef;
+  private requestSubscription: Subscription;
 
   messageModel: string = '';
 
@@ -18,7 +20,7 @@ export class DashboardComponent implements OnInit {
     this.messengerService.newChat();
   }
 
-  generateMessage(type:string, message:string, error:boolean){
+  generateMessage(type: string, message: string, error: boolean) {
     this.messengerService.addMessage({user: type, text: message, error})
     this.scrollToBottom();
   }
@@ -31,9 +33,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  requestChatGPTResponse(lastMessage:string, request:string){
+  stopMessage() {
+    if (this.requestSubscription) {
+      this.messengerService.updateAwaitResponse(false);
+      this.requestSubscription.unsubscribe();
+    }
+  }
+
+  requestChatGPTResponse(lastMessage: string, request: string) {
     this.messengerService.updateAwaitResponse(true);
-    this.messengerService.makeRequest(lastMessage, request).subscribe({
+
+    if (this.requestSubscription) {
+      this.requestSubscription.unsubscribe();
+    }
+    this.requestSubscription = this.messengerService.makeRequest(lastMessage, request).subscribe({
       next: (response) => {
         if (Array.isArray(response) && response.length > 0) {
           const generatedText = response[0]['original']['generated_text'];
@@ -42,7 +55,7 @@ export class DashboardComponent implements OnInit {
         this.messengerService.updateAwaitResponse(false);
       },
       error: (error: any) => {
-        this.generateMessage("bot", JSON.stringify(error.error).toString(), true)
+        this.generateMessage("bot", JSON.stringify(error.error).toString(), true);
         this.messengerService.updateAwaitResponse(false);
       }
     });

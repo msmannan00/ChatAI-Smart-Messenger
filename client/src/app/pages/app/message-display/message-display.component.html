@@ -1,6 +1,6 @@
 <div class="message" [ngClass]="{'user-message': user === 'user', 'bot-message': user === 'bot'}">
   <div [ngClass]="{'message-icon-user': user === 'user', 'message-icon-bot': user === 'bot'}" class="message-icon">
-    <i class="bi bi-person" *ngIf="user === 'user'"></i>
+    <i class="bi bi-person-fill" *ngIf="user === 'user'"></i>
     <i class="bi bi-robot" *ngIf="user === 'bot'"></i>
   </div>
   <div class="message-content"
